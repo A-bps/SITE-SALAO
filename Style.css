@@ -1,0 +1,618 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Links */
+a {
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #fff;
+  transition: 0.3s;
+}
+
+/* Efeito ao passar o mouse sobre o link */
+a:hover {
+  opacity: 0.6;
+}
+
+/* Espaçamento superior para evitar que o conteúdo fique sob o header fixo */
+main {
+  margin-top: 4.375rem;
+}
+
+/* Header e nav */
+.header {
+  background: #e8859b;
+  padding-inline: 1rem;
+  position: fixed;         /* faz o header ficar fixo */
+  top: 0;                  /* cola ele no topo */
+  left: 0;                 /* Alinha à esquerda */
+  width: 100%;             /* faz com que ocupe toda a largura */
+  z-index: 1000;           /* faz o header ficar  por cima de outros elementos */
+ 
+}
+
+.nav {
+  max-width: 120rem;      
+  height: 4.375rem;
+  margin-inline: auto;             /* centraliza o contêiner .nav dentro do .header */
+  padding-right: 2.5rem;           /* Espaço à direita, para o menu sanduiche ficar visivel dentro da tela */
+  display: flex;
+  justify-content: space-between;  /* Espaça elementos igualmente */
+  align-items: center;            /* Centraliza os itens verticalmente */
+}
+
+.logo1 {
+  width: 4rem;
+}
+
+/* Botão Hamburguer */
+.hamburguer {
+  position: relative;
+  width: 1.875rem;      /* Largura do botão */
+  height: 1.375rem;     /* Altura do botão */
+  background: none;     /* Remove fundo padrão */
+  border: none;         /* Remove borda padrão */
+  cursor: pointer;      /* Altera o cursor para indicar interatividade */
+  z-index: 1100;        /* Fica acima do menu lateral */
+}
+
+/* Linhas do hambúrguer */
+.hamburguer::before,
+.hamburguer::after {
+  content: "";                      /* Cria conteúdo vazio para representar as linhas */
+  position: absolute;               /* Permite posicionar em cima do botão */
+  width: 100%;                      /* largura das barrinhas do botao */
+  height: 3px;                      /* Espessura da linha */
+  background-color: #fff; 
+  transition: 0.3s ease-in-out;     /* Animação suave para transformações */
+  border-radius: 5px;
+  left: 0;                          /* Se apagar isso as linhas ficam desordenadas */
+}
+
+.hamburguer::before {
+  top: 0; /* coloca uma barrinha acima da barrinha principal ( central ) */
+}
+
+.hamburguer::after {
+  bottom: 0; /* coloca uma barrinha abaixo da barrinha principal ( central ) */
+}
+
+/* Linha do meio */
+.hamburguer div {
+  position: absolute;               /* Posiciona no centro vertical do botão */
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  top: 50%;                         /* Posiciona no meio vertical */
+  transform: translateY(-50%);      /* Centraliza */
+  transition: 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+/* Efeito X */
+.hamburguer.ativo div {
+  opacity: 0;     /* Esconde a linha do meio */
+}
+
+.hamburguer.ativo::before {
+  transform: rotate(45deg);   /* Rotaciona a linha superior */
+  top: 9px;                   /* Ajusta posição após rotação */
+}
+
+.hamburguer.ativo::after {
+  transform: rotate(-45deg);  /* Rotaciona a linha inferior */
+  bottom: 9px;                /* Ajusta posição após rotação */
+} 
+
+/* Menu lateral */
+.nav-list {
+  list-style: none;                       
+  position: fixed;                       /* Fixa o menu na tela */
+  top: 0;                                /* Alinha ao topo */
+  right: -100%;                          /* esconde */
+  width: 40%;                            /* % que ocupa da tela */  
+  height: 100vh;                         /* Ocupa 100% da altura da tela */
+  background-color: #e8859b;
+  display: flex;                         /* Layout flexível */
+  flex-direction: column;                /* Alinha os itens verticalmente */
+  justify-content: space-around;         /* Espaçamento entre os itens */
+  align-items: center;                   /* Centraliza horizontalmente */
+  gap: 1rem;                             /* Espaço entre os itens */ 
+  transition: right 0.3s ease-in-out;    /* Animação suave ao abrir/fechar */ 
+  z-index: 1000;                         /* Fica acima do conteúdo principal */
+} 
+
+/* Classe que mostra o menu lateral (ativa via JS) */
+.nav-list.ativo {
+  right: 0;   /* Move o menu para a tela ( deixa visível ) */
+}
+ 
+/* Estilo dos links no menu lateral */
+.nav-list a {
+  font-size: 1.2rem;  /* Tamanho do texto dos links */
+  color: #ffffff;   
+
+}
+
+/* Fundo */
+.fundo {
+  background-color: #e1dfd7;
+}
+
+/* Carrossel */
+.carrossel {
+  padding: 100px 50px;       /* Espaçamento das imagens*/
+  position: relative;        /* Permite posicionamento absoluto dos elementos internos */
+  width: 100%;               /* Ocupa 100% da largura disponível */
+  box-sizing: border-box;    /* Inclui padding no cálculo da largura total */
+}
+
+/* Container que envolve todo o carrossel */
+.carrossel-container {
+  max-width: 750px;          /* Largura máxima do carrossel */
+  height: 500px;             /* Altura do carrossel */
+  margin: 0 auto;            /* Centraliza horizontalmente */
+  position: relative;        /* Referência para posicionamento absoluto dos filhos */
+  display: flex;             /* Ativa flexbox para alinhamento */
+  align-items: center;       /* Centraliza verticalmente */
+  justify-content: center;   /* Centraliza horizontalmente */
+  overflow: visible;         /* Permite o conteúdo que ultrapasse */
+  padding: 20px 60px;
+}
+
+.carrossel-slides {
+  display: flex;             /* Layout flexível para as imagens */
+  align-items: center;       /* Centraliza verticalmente */
+  justify-content: center;   /* Centraliza horizontalmente */
+  position: relative;        /* Para posicionamento relativo dos elementos internos */
+}
+
+/* ESTILOS DAS IMAGENS */
+.carrossel-slides img {
+  border-radius: 10px;
+  box-shadow: 0 8px 10px rgba(0,0,0,0.1);                   /* Sombra */
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);  /* Transição suave */
+  object-fit: cover;                                          /* Preenche espaço mantendo proporção */
+  position: relative;                                         /* Posicionamento relativo */
+}
+
+/* IMAGEM CENTRAL (MAIOR) */
+.carrossel-slides img.central {
+  width: 50%;            /* Ocupa 50% da largura */
+  height: 100%;          /* Altura total */
+  z-index: 3;            /* Camada superior */
+  transform: scale(1);   /* Tamanho normal */
+}
+
+/* IMAGENS LATERAIS (MENORES) */
+.carrossel-slides img.lateral {
+  width: 25%;                   /* Largura menor */
+  height: 80%;                  /* Altura reduzida */
+  opacity: 0.8;                 /* Transparência */
+  filter: brightness(0.9);      /* Leve redução de brilho */
+}
+
+/* BOTÕES */
+.carrossel-btn {
+  position: absolute;                         /* Posiciona sobre o carrossel */
+  top: 50%;                                   /* Centraliza verticalmente */
+  transform: translateY(-50%);                /* Ajuste fino */
+  background: rgba(232, 133, 155, 0.9);     /* Fundo rosa transparente */ 
+  color: white;                             /* Cor do ícone */
+  border: none;                               /* Remove borda */
+  width: 40px;                                /* Largura da bolinha */
+  height: 40px;                               /* Altura da bolinha*/
+  border-radius: 50%;
+  font-size: 1.5rem;                          /* Tamanho da setinha*/
+  cursor: pointer;                            /* Aparece a mãozinha ao passar o cursor*/
+  z-index: 10;
+  transition: all 0.3s;                       /* Transição suave */
+}
+
+.carrossel-btn:hover {
+  background: #e8859b;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carrossel-container {
+  padding: 0 60px; /* Espaço lateral para as setas */
+}
+
+/* Posicionamento do botão anterior */
+.carrossel-btn.anterior {
+  left: 5px;             /* Alinha à esquerda */
+}
+
+/* Posicionamento do botão próximo */
+.carrossel-btn.proximo {
+  right: 5px;            /* Alinha à direita */
+}
+
+.carrossel-btn {
+  z-index: 5;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+  .carrossel-container {
+    height: 400px;   /* Reduz altura */
+  }
+  
+  .carrossel-btn {
+    width: 40px;        /* Botões menores */
+    height: 40px;
+    font-size: 1.2rem;  /* Ícones menores */
+  }
+}
+
+@media (max-width: 480px) {
+  .carrossel-container {
+    height: 300px;
+  }
+  
+  .carrossel-slides {
+    gap: 15px;
+  }
+  
+  .carrossel-slides img.central {
+    width: 70%;
+  }
+  
+  .carrossel-slides img.lateral {
+    width: 15%;
+    height: 60%;
+    opacity: 0.7;
+  }
+}
+
+/* === ANIMAÇÕES === */
+.carrossel-slides {
+  transition: transform 0.6s ease;  /* Transição suave para slides */
+}
+
+
+.carrossel-slides {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  gap: 0; /* Remove espaçamento entre imagens */
+}
+
+/* Posicionamento absoluto para todas as imagens */
+.carrossel-slides img {
+  position: absolute;
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, opacity; /* Otimização de performance */
+}
+
+/* Imagem CENTRAL (maior) */
+.carrossel-slides img.active {
+  width: 50%;                         /* Largura: 50% do container */
+  height: 100%;                       /* Altura: 100% do container */
+  left: 50%;                          /* Posiciona no centro horizontal (50% da esquerda) */
+  top: 50%;                           /* Posiciona no centro vertical (50% do topo) */
+  transform: translate(-50%, -50%);   /* Ajuste para centralização */
+  opacity: 1; 
+  z-index: 3;
+}
+
+/* Imagem ESQUERDA (menor) */
+.carrossel-slides img.left {
+  width: 28%;
+  height: 85%;
+  left: 0.1%;                                /* Alinhamento à esquerda  */
+  top: 50%; 
+  transform: translateY(-50%) scale(0.95);  /* Centraliza e reduz levemente o tamanho */
+  opacity: 0.9;                             /* Levemente transparente */
+  z-index: 2;
+}
+
+/* Imagem DIREITA (menor) */
+.carrossel-slides img.right {
+  width: 28%;
+  height: 85%;
+  right: 0.2%;
+  left: auto;
+  top: 50%;
+  transform: translateY(-50%) scale(0.95);
+  opacity: 0.9;
+  z-index: 2;
+}
+
+/* Animações de entrada e saída */
+
+.carrossel-slides img.entering.left {
+  transform: translateY(-50%) scale(0.7); /* Reduz ainda mais o tamanho (70%) */
+}
+
+.carrossel-slides img.entering.right {
+  transform: translateY(-50%) scale(0.7);
+}
+
+/* Efeito de Saída */
+.carrossel-slides img.exiting {
+  opacity: 1; 
+  transform: translate(-50%, -50%) scale(1.1) !important; /* Aumenta e centraliza */
+}
+
+/* Efeito de entrada (principal) */
+.carrossel-slides img.entering {
+  animation: slideIn 0.6s ease-out forwards;  /* Aplica animação "slideIn" */
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;                                    /* Começa invisível */
+    transform: translate(-50%, -50%) scale(0.9);   /* Pequena e deslocada */
+  }
+  to {
+    opacity: 1;                                 /* Termina visível */
+    transform: translate(-50%, -50%) scale(1);  /* Tamanho normal e centralizada */
+  }
+}
+
+/* Efeito de entrada pela esquerda */
+.carrossel-slides img.left.entering {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;                                                /* Começa invisível */
+    transform: translateY(-50%) scale(0.8) translateX(-20px);  /* Pequena e deslocada para a esquerda */
+  }
+  to {
+    opacity: 0.9;                             /* Termina semitransparente */
+    transform: translateY(-50%) scale(0.95);  /* Tamanho final */
+  }
+}
+
+/* Efeito entrada pela direita */
+.carrossel-slides img.right.entering {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.8) translateX(20px);
+  }
+  to {
+    opacity: 0.9;
+    transform: translateY(-50%) scale(0.95);
+  }
+}
+
+@media (max-width: 425px) {
+  .carrossel-container {
+    height: 320px; /* Altura um pouco maior */
+  }
+
+  /* Imagem CENTRAL (destaque) */
+  .carrossel-slides img.active {
+    width: 65%;
+    height: 110%; /* Sobressai verticalmente */
+    transform: translate(-50%, -50%) scale(1.1); /* Efeito de zoom */
+    z-index: 4; /* Camada superior */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* Destaque visual */
+  }
+
+  /* Imagens LATERAIS (simétricas) */
+  .carrossel-slides img.left,
+  .carrossel-slides img.right {
+    width: 25%; /* Largura igual para ambas */
+    height: 75%;
+    opacity: 0.85;
+    filter: brightness(0.95);
+    z-index: 3; /* Camada inferior à central */
+  }
+
+  /* Posicionamento PRECISO */
+  .carrossel-slides img.left {
+    left: 3%;
+    top: 52%; /* Alinhamento vertical ajustado */
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  .carrossel-slides img.right {
+    left: 77%;
+    top: 52%; /* Mesmo alinhamento que a esquerda */
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  /* Efeito de profundidade */
+  .carrossel-slides::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(225,223,215,0.8) 0%, transparent 20%, transparent 80%, rgba(225,223,215,0.8) 100%);
+    z-index: 2;
+    pointer-events: none;
+  }
+}
+
+.titulo {
+  font-size: 2.813rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #e8859b;
+  text-align: center;
+}
+
+.texto {
+  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  text-align: center;
+  line-height: 1.6; /* Melhora a legibilidade */
+  font-size: 1.25rem; /* Tamanho adequado */
+  padding: 5rem;
+}
+
+.container-amanda {
+  display: flex;
+  justify-content: center; /* horizontal */
+  align-items: center;     /* vertical */
+  height: 12.5rem;          /* defina uma altura */
+}
+
+.Amanda {
+  width: 9.375rem;
+  height: 9.375rem;
+  border-radius: 100%;
+}
+
+.info-amanda {
+  text-align: center;
+  font-size: 1rem;
+  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.mep {
+  font-size:25px;
+  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  color: #e8859b;
+  margin: 0px;
+  transform: translate(44%, -55%); /* Centraliza verticalmente */
+}
+
+.servicos {
+  text-align: center;
+  padding: 5rem 1rem;
+  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  color: #e8859b;
+  font-size: 2.5rem;
+}
+
+.container-servicos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* ALINHA OS CARDS À ESQUERDA */
+  gap: 1.875rem;                   /* Espaçamento entre os cartões */
+  padding: 0 2.5rem;             /* Espaço nas laterais */
+}
+
+.cartao-servico {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 1.25rem;
+  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.1);
+  padding: 1.25rem;
+  gap: 1.25rem;
+  height: 7.813rem;
+  width: 31.25rem;                /* Largura fixa para formar "colunas" */
+  margin-bottom: 1.25rem;
+  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.imagem-servico img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.descricao-servico h3 {
+  font-size: 1.2rem;
+  color: #e8859b;
+  margin-bottom: 10px;
+}
+
+.descricao-servico p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* -------------------------------------------------------------------------------- */
+
+.container-servicos2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* ALINHA OS CARDS À ESQUERDA */
+  gap: 1.875rem;                   /* Espaçamento entre os cartões */
+  padding: 0 2.5rem;             /* Espaço nas laterais */
+}
+
+.cartao-servico2 {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 1.25rem;
+  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.1);
+  padding: 1.25rem;
+  gap: 1.25rem;
+  height: 7.813rem;
+  width: 31.25rem;                /* Largura fixa para formar "colunas" */
+  margin-bottom: 1.25rem;
+  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.imagem-servico2 img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.descricao-servico2 h3 {
+  font-size: 1.2rem;
+  color: #e8859b;
+  margin-bottom: 10px;
+}
+
+.descricao-servico2 p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* -------------------------------------------------------------------------------- */
+
+.container-servicos3 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* ALINHA OS CARDS À ESQUERDA */
+  gap: 1.875rem;                   /* Espaçamento entre os cartões */
+  padding: 0 2.5rem;             /* Espaço nas laterais */
+}
+
+.cartao-servico3 {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 1.25rem;
+  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.1);
+  padding: 1.25rem;
+  gap: 1.25rem;
+  height: 7.813rem;
+  width: 31.25rem;                /* Largura fixa para formar "colunas" */
+  margin-bottom: 1.25rem;
+  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.imagem-servico3 img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.descricao-servico3 h3 {
+  font-size: 1.2rem;
+  color: #e8859b;
+  margin-bottom: 10px;
+}
+
+.descricao-servico3 p {
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* -------------------------------------------------------------------------------- */
