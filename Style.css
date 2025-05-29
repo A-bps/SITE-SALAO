@@ -543,6 +543,16 @@ main {
 
 /* -------------------------------------------------------------------------------- */
 
+.cabelo {
+  font-size: 25px;
+  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  color: #e8859b;
+  margin: 20px auto; /* Centraliza o bloco */
+  text-align: center;
+  display: block; /* Garante comportamento de bloco */
+  width: 85px; /* Ocupa toda a largura disponível */
+} 
+
 @media (max-width: 600px) {
   .cartao-servico, .cartao-servico2, .cartao-servico3  {
     flex-direction: row; /* continua lado a lado no mobile */
