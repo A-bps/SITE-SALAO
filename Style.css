@@ -480,8 +480,8 @@ main {
   font-size:25px;
   font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   color: #e8859b;
-  margin: 0px;
-   text-align: center;
+  margin: 20px;
+  text-align: center;
 }
 
 .servicos {
@@ -496,9 +496,9 @@ main {
 .container-servicos {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start; /* ALINHA OS CARDS À ESQUERDA */
-  gap: 1.875rem;                   /* Espaçamento entre os cartões */
-  padding: 0 2.5rem;             /* Espaço nas laterais */
+  justify-content: flex-start;
+  gap: 1.875rem;
+  padding: 0 2.5rem 0 6.3rem; /* Aumentei o padding-left para 4rem (64px) */
 }
 
 .cartao-servico {
@@ -536,7 +536,7 @@ main {
 }
 
 .descricao-servico p {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   color: #555;
   line-height: 1.5;
 }
