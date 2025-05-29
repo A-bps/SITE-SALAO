@@ -8,7 +8,6 @@ html, body {
   max-width: 100vw;
   overflow-x: hidden;
 }
-
 /* Links */
 a {
   font-family: sans-serif;
@@ -157,8 +156,8 @@ main {
 
 /* Container que envolve todo o carrossel */
 .carrossel-container {
-  max-width: 750px;          /* Largura máxima do carrossel */
-  height: 500px;             /* Altura do carrossel */
+  max-width: 1000px;          /* Largura máxima do carrossel */
+  height: 700px;             /* Altura do carrossel */
   margin: 0 auto;            /* Centraliza horizontalmente */
   position: relative;        /* Referência para posicionamento absoluto dos filhos */
   display: flex;             /* Ativa flexbox para alinhamento */
@@ -259,15 +258,15 @@ main {
   }
   
   .carrossel-slides {
-    gap: 15px;
+    gap: 20px;
   }
   
   .carrossel-slides img.central {
-    width: 70%;
+    width: 65%;
   }
   
   .carrossel-slides img.lateral {
-    width: 15%;
+    width: 35%;
     height: 60%;
     opacity: 0.7;
   }
@@ -482,7 +481,7 @@ main {
   font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   color: #e8859b;
   margin: 0px;
-  transform: translate(44%, -55%); /* Centraliza verticalmente */
+   text-align: center;
 }
 
 .servicos {
@@ -507,13 +506,19 @@ main {
   align-items: center;
   background-color: white;
   border-radius: 1.25rem;
-  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 1.25rem;
-  gap: 1.25rem;
-  height: 7.813rem;
-  width: 31.25rem;                /* Largura fixa para formar "colunas" */
-  margin-bottom: 1.25rem;
+  gap: 1rem;
+  height: 180px; /* altura fixa padronizada */
   font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  width: 400px; /* garante largura uniforme */
+  box-sizing: border-box;
+}
+
+.imagem-servico {
+  display: flex;
+  align-items: center; /* imagem alinhada verticalmente */
+  justify-content: center;
 }
 
 .imagem-servico img {
@@ -521,6 +526,7 @@ main {
   height: 120px;
   object-fit: cover;
   border-radius: 15px;
+  display: block;
 }
 
 .descricao-servico h3 {
@@ -530,95 +536,31 @@ main {
 }
 
 .descricao-servico p {
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   color: #555;
   line-height: 1.5;
 }
 
 /* -------------------------------------------------------------------------------- */
 
-.container-servicos2 {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start; /* ALINHA OS CARDS À ESQUERDA */
-  gap: 1.875rem;                   /* Espaçamento entre os cartões */
-  padding: 0 2.5rem;             /* Espaço nas laterais */
+@media (max-width: 600px) {
+  .cartao-servico, .cartao-servico2, .cartao-servico3  {
+    flex-direction: row; /* continua lado a lado no mobile */
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .imagem-servico img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .descricao-servico h3 {
+    font-size: 1rem;
+  }
+
+  .descricao-servico p {
+    font-size: 0.8rem;
+  }
 }
-
-.cartao-servico2 {
-  display: flex;
-  align-items: center;
-  background-color: white;
-  border-radius: 1.25rem;
-  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.1);
-  padding: 1.25rem;
-  gap: 1.25rem;
-  height: 7.813rem;
-  width: 31.25rem;                /* Largura fixa para formar "colunas" */
-  margin-bottom: 1.25rem;
-  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-}
-
-.imagem-servico2 img {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 15px;
-}
-
-.descricao-servico2 h3 {
-  font-size: 1.2rem;
-  color: #e8859b;
-  margin-bottom: 10px;
-}
-
-.descricao-servico2 p {
-  font-size: 0.95rem;
-  color: #555;
-  line-height: 1.5;
-}
-
-/* -------------------------------------------------------------------------------- */
-
-.container-servicos3 {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start; /* ALINHA OS CARDS À ESQUERDA */
-  gap: 1.875rem;                   /* Espaçamento entre os cartões */
-  padding: 0 2.5rem;             /* Espaço nas laterais */
-}
-
-.cartao-servico3 {
-  display: flex;
-  align-items: center;
-  background-color: white;
-  border-radius: 1.25rem;
-  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.1);
-  padding: 1.25rem;
-  gap: 1.25rem;
-  height: 7.813rem;
-  width: 31.25rem;                /* Largura fixa para formar "colunas" */
-  margin-bottom: 1.25rem;
-  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-}
-
-.imagem-servico3 img {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 15px;
-}
-
-.descricao-servico3 h3 {
-  font-size: 1.2rem;
-  color: #e8859b;
-  margin-bottom: 10px;
-}
-
-.descricao-servico3 p {
-  font-size: 0.85rem;
-  color: #555;
-  line-height: 1.5;
-}
-
 /* -------------------------------------------------------------------------------- */
