@@ -554,7 +554,7 @@ main {
 } 
 
 @media (max-width: 600px) {
-  .cartao-servico, .cartao-servico2, .cartao-servico3  {
+  .cartao-servico {
     flex-direction: row; /* continua lado a lado no mobile */
     align-items: flex-start;
     padding: 1rem;
@@ -574,3 +574,64 @@ main {
   }
 }
 /* -------------------------------------------------------------------------------- */
+
+footer {
+  margin-top: 9rem;
+  padding: 2rem 4rem;
+  background-color: #e8859b;
+}
+
+/* Bloco do título e linha */
+.topo-rodape {
+  margin-bottom: 2rem;
+}
+
+.nome-rodape {
+  margin: 0;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #e1dfd7;
+}
+
+.linha-rodape {
+  margin-top: 0.5rem;
+  border: 1px solid #e1dfd7;
+  width: 100%;
+}
+
+/* Bloco das colunas */
+.conteudo-rodape {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 5rem;
+}
+
+.coluna-rodape {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.horario {
+  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  color: #e1dfd7;
+  margin-bottom: 0.5rem;
+}
+
+.dias {
+  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  color: #e1dfd7;
+  margin: 0;
+}
+
+.contatos {
+  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  color: #e1dfd7;
+  margin: 0;
+}
+
+.insta-whats {
+ font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  color: #e1dfd7;
+  margin: 0;
+}
