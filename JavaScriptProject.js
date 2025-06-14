@@ -1,4 +1,4 @@
-// ========== MENU HAMBURGUER ==========
+// manu hamburguer
 const hamburguer = document.querySelector(".hamburguer");
 const navList = document.querySelector(".nav-list");
 
@@ -7,7 +7,7 @@ hamburguer.addEventListener("click", () => {
   hamburguer.classList.toggle("ativo");
 });
 
-// ========== CARROSSEL ==========
+// carrossel
 class Carrossel {
   constructor() {
     this.slidesContainer = document.querySelector('.carrossel-slides');
@@ -55,7 +55,7 @@ class Carrossel {
     const prevIndex = this.getPrevIndex();
     const nextIndex = this.getNextIndex();
     
-    // Adiciona animação de entrada
+    // coloca animação de entrada
     const leftImg = allImages[prevIndex];
     leftImg.style.display = 'block';
     leftImg.classList.add('left', 'entering');
@@ -68,7 +68,7 @@ class Carrossel {
     rightImg.style.display = 'block';
     rightImg.classList.add('right', 'entering');
     
-    // Remove a classe de entering após a animação
+    // tira a classe de [entering] após a animação, para evitar bugs, repetições ou conflito com futuras animações.
     setTimeout(() => {
       leftImg.classList.remove('entering');
       centerImg.classList.remove('entering');
@@ -91,12 +91,12 @@ class Carrossel {
       this.resetAutoPlay(); // Reinicia o auto-play quando o usuário interage
     });
     
-    // Pausa o auto-play quando o mouse está sobre o carrossel
+    // para o auto play quando o mouse esta em cima do carrossel
     this.slidesContainer.addEventListener('mouseenter', () => {
       this.pauseAutoPlay();
     });
     
-    // Retoma o auto-play quando o mouse sai do carrossel
+    // volta o autoaplay quando o mouse sai do carrossel
     this.slidesContainer.addEventListener('mouseleave', () => {
       this.startAutoPlay();
     });
@@ -111,22 +111,26 @@ class Carrossel {
   }
   
   // Métodos para o auto-play
+
+  // inicia o auto play, o carrossel troca os slides sozinho
   startAutoPlay() {
-    if (this.autoPlayInterval) return; // Já está rodando
+    if (this.autoPlayInterval) return; // rodando
     
     this.autoPlayInterval = setInterval(() => {
       this.currentIndex = this.getNextIndex();
       this.updateVisibleSlides();
     }, this.autoPlayDelay);
   }
-  
+
+  // pausa o auto play
   pauseAutoPlay() {
     if (this.autoPlayInterval) {
       clearInterval(this.autoPlayInterval);
       this.autoPlayInterval = null;
     }
   }
-  
+
+  // auto play volta rodar
   resetAutoPlay() {
     this.pauseAutoPlay();
     this.startAutoPlay();
@@ -135,3 +139,4 @@ class Carrossel {
 
 // Inicializa quando o DOM estiver pronto
 document.addEventListener('DOMContentLoaded', () => new Carrossel());
+// DOM = Document Object Model, é basicamente a estrutura completa de todos os elementos HTML da página, que o navegador cria internamente pra que o JavaScript consiga manipular as coisas (tipo pegar um botão, mudar textos, fazer animações, etc).
