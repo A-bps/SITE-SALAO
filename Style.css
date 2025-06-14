@@ -451,10 +451,12 @@ main {
 
 .texto {
   font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  text-align: center;
-  line-height: 1.6; /* Melhora a legibilidade */
-  font-size: 1.25rem; /* Tamanho adequado */
-  padding: 5rem;
+  text-align: justify;             /* Justifica o texto */
+  line-height: 1.6;                /* Espaçamento entre linhas */
+  font-size: 1.25rem;              /* Tamanho de fonte confortável */
+  padding: 2rem 3rem;              /* Espaçamento interno (reduzi o padding lateral) */
+  max-width: 900px;                /* Limita a largura máxima para não ficar difícil de ler */
+  margin: 0 auto;                  /* Centraliza o bloco de texto na tela */
 }
 
 .container-amanda {
@@ -614,7 +616,7 @@ footer {
 
 .horario {
   font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  color: #e1dfd7;
+  color: #fff;
   margin-bottom: 0.5rem;
 }
 
