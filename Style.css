@@ -41,11 +41,11 @@ main {
 .nav {
   max-width: 120rem;      
   height: 4.375rem;
-  margin-inline: auto;             /* centraliza o contêiner .nav dentro do .header */
-  padding-right: 2.5rem;           /* Espaço à direita, para o menu sanduiche ficar visivel dentro da tela */
+  margin-inline: auto;             
+  padding-right: 2.5rem;           
   display: flex;
-  justify-content: space-between;  /* Espaça elementos igualmente */
-  align-items: center;            /* Centraliza os itens verticalmente */
+  justify-content: space-between;  
+  align-items: center;            
 }
 
 .logo1 {
@@ -55,90 +55,104 @@ main {
 /* Botão Hamburguer */
 .hamburguer {
   position: relative;
-  width: 1.875rem;      /* Largura do botão */
-  height: 1.375rem;     /* Altura do botão */
-  background: none;     /* Remove fundo padrão */
-  border: none;         /* Remove borda padrão */
-  cursor: pointer;      /* Altera o cursor para indicar interatividade */
-  z-index: 1100;        /* Fica acima do menu lateral */
+  width: 1.875rem;      
+  height: 1.375rem;     
+  background: none;     
+  border: none;         
+  cursor: pointer;      
+  z-index: 1100;        
 }
 
-/* Linhas do hambúrguer */
 .hamburguer::before,
 .hamburguer::after {
-  content: "";                      /* Cria conteúdo vazio para representar as linhas */
-  position: absolute;               /* Permite posicionar em cima do botão */
-  width: 100%;                      /* largura das barrinhas do botao */
-  height: 3px;                      /* Espessura da linha */
+  content: "";                      
+  position: absolute;               
+  width: 100%;                      
+  height: 3px;                      
   background-color: #fff; 
-  transition: 0.3s ease-in-out;     /* Animação suave para transformações */
+  transition: 0.3s ease-in-out;     
   border-radius: 5px;
-  left: 0;                          /* Se apagar isso as linhas ficam desordenadas */
+  left: 0;                          
 }
 
 .hamburguer::before {
-  top: 0; /* coloca uma barrinha acima da barrinha principal ( central ) */
+  top: 0;
 }
 
 .hamburguer::after {
-  bottom: 0; /* coloca uma barrinha abaixo da barrinha principal ( central ) */
+  bottom: 0;
 }
 
-/* Linha do meio */
 .hamburguer div {
-  position: absolute;               /* Posiciona no centro vertical do botão */
+  position: absolute;               
   width: 100%;
   height: 3px;
   background-color: #fff;
-  top: 50%;                         /* Posiciona no meio vertical */
-  transform: translateY(-50%);      /* Centraliza */
+  top: 50%;                         
+  transform: translateY(-50%);      
   transition: 0.3s ease-in-out;
   border-radius: 5px;
 }
 
-/* Efeito X */
 .hamburguer.ativo div {
-  opacity: 0;     /* Esconde a linha do meio */
+  opacity: 0;     
 }
 
 .hamburguer.ativo::before {
-  transform: rotate(45deg);   /* Rotaciona a linha superior */
-  top: 9px;                   /* Ajusta posição após rotação */
+  transform: rotate(45deg);   
+  top: 9px;                   
 }
 
 .hamburguer.ativo::after {
-  transform: rotate(-45deg);  /* Rotaciona a linha inferior */
-  bottom: 9px;                /* Ajusta posição após rotação */
+  transform: rotate(-45deg);  
+  bottom: 9px;                
 } 
 
 /* Menu lateral */
 .nav-list {
   list-style: none;                       
-  position: fixed;                       /* Fixa o menu na tela */
-  top: 0;                                /* Alinha ao topo */
-  right: -100%;                          /* esconde */
-  width: 40%;                            /* % que ocupa da tela */  
-  height: 100vh;                         /* Ocupa 100% da altura da tela */
+  position: fixed;                       
+  top: 0;                                
+  right: -100%;                         
+  width: 40%;                            
+  height: 100vh;                         
   background-color: #e8859b;
-  display: flex;                         /* Layout flexível */
-  flex-direction: column;                /* Alinha os itens verticalmente */
-  justify-content: space-around;         /* Espaçamento entre os itens */
-  align-items: center;                   /* Centraliza horizontalmente */
-  gap: 1rem;                             /* Espaço entre os itens */ 
-  transition: right 0.3s ease-in-out;    /* Animação suave ao abrir/fechar */ 
-  z-index: 1000;                         /* Fica acima do conteúdo principal */
+  display: flex;                         
+  flex-direction: column;                
+  justify-content: flex-start;           
+  align-items: flex-start;             
+  padding-top: 5rem;                     
+  transition: right 0.3s ease-in-out;    
+  z-index: 1000;                         
+  gap: 0;                                
 } 
 
-/* Classe que mostra o menu lateral (ativa via JS) */
-.nav-list.ativo {
-  right: 0;   /* Move o menu para a tela ( deixa visível ) */
+.nav-list li {
+  width: 100%;
+  border-bottom: 1px solid white;   
 }
- 
+
+.nav-list li a {
+  display: block;
+  padding: 1rem 2rem;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  text-align: center;   /* <<<<< Alinha o texto ao centro */
+  font-size: 1.5rem;
+  width: 100%;           /* Faz o link ocupar toda a largura do li */
+}
+.nav-list li:last-child {
+  border-bottom: none;              
+}
+
+.nav-list.ativo {
+  right: 0;  
+}
+
 /* Estilo dos links no menu lateral */
 .nav-list a {
-  font-size: 1.2rem;  /* Tamanho do texto dos links */
+  font-size: 1.2rem;  
   color: #ffffff;   
-
 }
 
 /* Fundo */
