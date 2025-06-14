@@ -13,10 +13,10 @@ class Carrossel {
     this.slidesContainer = document.querySelector('.carrossel-slides');
     this.images = [
       'img/Produtos-Esmalteria.jfif',
-      'img/teste esmalteria2.jfif', 
-      'img/teste esmalteria3.jfif',
-      'img/teste esmalteria4.jfif',
-      'img/teste esmalteria5.jfif'
+      'img/imagem carrossel1.jpeg', 
+      'img/imagem carrossel2.jpeg',
+      'img/imagem carrossel3.jpeg',
+      'img/imagem carrossel4.jpeg'
     ];
     this.currentIndex = 0;
     this.autoPlayInterval = null;
